@@ -8,9 +8,11 @@
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
+    "lint": "npm run lint:js",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@cookieseater/vue-yandex-share": "^0.2.1",
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/style-resources": "^1.0.0",
     "core-js": "^3.8.2",

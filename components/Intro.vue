@@ -1,7 +1,7 @@
 <template>
   <div class="intro">
     <p class="intro__date">1878-1927</p>
-    <h2 class="intro__title">борис кустодиев</h2>
+    <h1 class="intro__title">борис кустодиев</h1>
     <p class="intro__text">
       Художник, запечатлевший на своих ярких и жизнерадостных полотнах сцены
       русских будней и праздников. Обладал редким безграничным талантом,
@@ -20,11 +20,11 @@ export default {}
   position: relative;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   justify-content: center;
   height: 100%;
   color: $light;
-  padding-left: 90px;
+  padding-left: 140px;
+  padding-top: 0;
 
   &__date,
   &__title {
@@ -32,18 +32,44 @@ export default {}
   }
 
   &__date {
-    position: absolute;
-    @include text(64px, 59px, 400);
-    transform: translate3d(-70%, 0, 0) rotate(-90deg);
+    @include text(64px, 59px);
+
+    @media (min-width: $desktop-width) {
+      position: absolute;
+      transform: translate3d(-66%, 0, 0) rotate(-90deg);
+    }
   }
 
   &__title {
     max-width: 460px;
-    @include text(80px, 80px, 400);
+    @include text(80px, 80px);
+    margin: 7px 0 33px 41px;
   }
 
   &__text {
-    max-width: 520px;
+    max-width: 561px;
+    @include text(16px, 29px, 300);
+    margin-left: 41px;
+    margin-top: 0;
+  }
+
+  @media (max-width: $mobile-width) {
+    justify-content: flex-start;
+    padding: 17px 20px 0;
+
+    &__date {
+      @include text(20px, 18px);
+      margin-bottom: 17px;
+    }
+    &__title {
+      @include text(40px, 44px);
+      margin: 0;
+      margin-bottom: 19px;
+    }
+
+    &__text {
+      margin: 0;
+    }
   }
 }
 </style>

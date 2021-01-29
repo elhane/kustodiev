@@ -1,9 +1,9 @@
 <template>
   <header class="header">
-    <nav class="header__nav">
+    <div class="header__nav">
       <div class="header__search-wrapper">
         <form>
-          <transition name="slide">
+          <transition name="fade">
             <input v-show="isHidden" id="search" type="search" name="search" />
           </transition>
           <svg
@@ -20,35 +20,21 @@
           </svg>
         </form>
       </div>
-      <ul class="header__menu">
-        <li class="header__menu-item">
-          <nuxt-link class="header__menu-link" to="/biography">
-            биография
-          </nuxt-link>
-        </li>
-        <li class="header__menu-item">
-          <nuxt-link class="header__menu-link" to="/art">
-            творчество
-          </nuxt-link>
-        </li>
-        <li class="header__menu-item">
-          <nuxt-link class="header__menu-link" to="/pictures">
-            картины
-          </nuxt-link>
-        </li>
-        <li class="header__menu-item">
-          <nuxt-link class="header__menu-link" to="/museums">музеи</nuxt-link>
-        </li>
-      </ul>
-    </nav>
+      <MenuHeader />
+    </div>
   </header>
 </template>
 
 <script>
+import MenuHeader from '@/components/MenuHeader'
+
 export default {
+  components: {
+    MenuHeader,
+  },
   data() {
     return {
-      isHidden: true,
+      isHidden: false,
     }
   },
 }
@@ -58,6 +44,7 @@ export default {
 .header {
   color: $light;
   width: 100%;
+  padding: 38px 100px 0 40px;
 
   &__search-wrapper {
     position: relative;
@@ -65,23 +52,25 @@ export default {
     min-width: 60px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 
     input {
       height: 30px;
       width: 170px;
+      padding-right: 30px;
       color: $light;
       background-color: transparent;
       border: none;
       border-bottom: 1px solid $light;
       outline: none;
-      padding-right: 30px;
-      animation: slide 3s ease;
     }
 
     svg {
       position: relative;
       z-index: 50;
-      left: -40px;
+      left: -30px;
+      width: 16px;
+      height: 16px;
       cursor: pointer;
     }
   }
@@ -92,30 +81,27 @@ export default {
     justify-content: space-between;
   }
 
-  &__menu {
-    display: flex;
-    @include list-reset;
-  }
+  @media (max-width: $mobile-width) {
+    padding: 0;
 
-  &__menu-link {
-    display: block;
-    font-family: $helvetica;
-    @include text(14px, 16px, 400);
-    text-decoration: none;
-    color: $light;
-    margin-left: 20px;
+    &__nav {
+      min-height: 84px;
+      padding: 0 30px 0 17px;
+    }
   }
 }
 
-.slide-enter-active {
-  transition: transform 0.3s ease-in-out;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s linear;
 }
-.slide-leave-active {
-  transition: transform 0.3s ease-in-out;
+
+.fade-enter,
+.fade-leave-to {
+  transform: scaleX(0);
 }
-.slide-enter,
-.slide-leave-to {
-  transform: translateX(-100%);
-  opacity: 0;
+
+.fade-enter-to {
+  transform: scaleX(1);
 }
 </style>
