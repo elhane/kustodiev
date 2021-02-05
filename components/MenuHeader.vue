@@ -81,7 +81,7 @@
   .menu {
     position: absolute;
     right: -31px;
-    top: -31px;
+    top: -32px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -149,7 +149,7 @@
     input:checked ~ span:nth-last-child(4) {
       background-color: $dark;
       border-color: $dark;
-      transform: rotate(45deg) translate(2px, -1px);
+      transform: rotate(45deg) translate(1px, -1px);
     }
     input:checked ~ ul {
       transform: none;

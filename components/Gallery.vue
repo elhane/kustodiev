@@ -1,18 +1,16 @@
 <template>
   <section class="gallery">
     <div class="gallery__slider">
-      <!--pre-wrapper -->
       <!-- миниатюры -->
       <div ref="slider1" class="gallery__slider-mobile">
-        <!-- .wrapper  -->
         <div ref="slider" class="gallery__thumbnails">
-          <!-- .post-wrapper  -->
           <div
             v-for="(picture, index) in pictures"
             :key="index"
             :class="{ active: activePicture == index }"
             :style="{
-              'background-image': 'url(' + picture.src + ')',
+              backgroundImage:
+                'url(' + require(`~/static/pictures/${picture.src}`) + ')',
             }"
             @click="changePicture(index)"
           ></div>
@@ -20,10 +18,10 @@
       </div>
 
       <!-- название и номер -->
-      <!-- <p>Версия {{ isMobile }}</p> -->
       <p class="gallery__pictute-name">{{ pictures[activePicture].name }}</p>
       <p class="gallery__pictute-number">
-        <span>{{ pictures.indexOf(pictures[activePicture]) + 1 }}</span> / 505
+        <span>{{ pictures.indexOf(pictures[activePicture]) + 1 }}</span> /
+        {{ pictures.length }}
       </p>
 
       <!-- кнопки -->
@@ -54,12 +52,6 @@
         </svg>
       </button>
 
-      <!-- <nuxt-link class="gallery__link" to="/pictures"
-          >все картины
-          <svg xmlns="http://www.w3.org/2000/svg" width="4" height="7">
-            <path fill="#bfbfbf" d="M1 7l-.8-.9 2.5-2.6L.2 1 1 .1l3.4 3.4z" />
-          </svg>
-        </nuxt-link> -->
       <nuxt-link class="gallery__link" to="/pictures"
         >все картины
         <svg xmlns="http://www.w3.org/2000/svg" width="4" height="7">
@@ -68,14 +60,17 @@
       </nuxt-link>
 
       <!-- активный слайд -->
-      <div
-        class="gallery__activePicture"
-        :style="{
-          'background-image': 'url(' + pictures[activePicture].src + ')',
-        }"
-      >
-        <!-- <img :src="pictures[activePicture].src" alt="" /> -->
-      </div>
+      <transition name="fade">
+        <div
+          class="gallery__activePicture"
+          :style="{
+            backgroundImage:
+              'url(' +
+              require(`~/static/pictures/${pictures[activePicture].src}`) +
+              ')',
+          }"
+        ></div>
+      </transition>
     </div>
   </section>
 </template>
@@ -90,23 +85,23 @@ export default {
       pictures: [
         {
           name: 'Купчиха за чаем',
-          src: require('~/static/pictures/slide1@1x.jpg'),
+          src: 'slide1@1x.jpg',
         },
         {
           name: 'Купчихи',
-          src: require('~/static/pictures/slide2@1x.jpg'),
+          src: 'slide2@1x.jpg',
         },
         {
           name: 'Осенний сельский праздник',
-          src: require('~/static/pictures/slide3@1x.jpg'),
+          src: 'slide3@1x.jpg',
         },
         {
           name: 'Масленица',
-          src: require('~/static/pictures/slide4@1x.jpg'),
+          src: 'slide4@1x.jpg',
         },
         {
           name: 'Осень в провинции. Чаепитие',
-          src: require('~/static/pictures/slide5@1x.jpg'),
+          src: 'slide5@1x.jpg',
         },
       ],
     }
@@ -156,10 +151,6 @@ export default {
           ? this.activePicture + 1
           : 0
       )
-
-      if (this.windowWidth < 1023) {
-        console.log('меньше 1023')
-      }
     },
     previousPicture() {
       this.changePicture(
@@ -223,7 +214,6 @@ export default {
     left: 0;
     right: 0;
     bottom: 40px;
-    // margin: 0 auto;
     text-align: center;
     @include text(14px, 20px, 300);
     color: $light;
@@ -279,18 +269,16 @@ export default {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    // width: 85%;
     padding: 40px 0;
 
     div {
       width: 120px;
       height: 90px;
-      cursor: pointer;
-      // padding-bottom: 65%;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       opacity: 0.6;
+      cursor: pointer;
 
       &:hover {
         opacity: 0.8;

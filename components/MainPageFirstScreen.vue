@@ -74,7 +74,7 @@ export default {
     }
   }
 
-  @media (min-width: 360px) and (max-width: $desktop-width) {
+  @media (min-width: 360px) and (max-width: $mobile-width) {
     &__image-wrapper {
       height: 30%;
       max-height: 500px;

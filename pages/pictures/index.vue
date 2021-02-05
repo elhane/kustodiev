@@ -1,16 +1,20 @@
 <template>
   <div>
-    <PicturesPageFirstScreen />
+    <CatalogPageFirstScreen />
+    <Catalog />
   </div>
 </template>
 
 <script>
-import PicturesPageFirstScreen from '@/components/PicturesPageFirstScreen'
+import CatalogPageFirstScreen from '@/components/CatalogPageFirstScreen'
+import Catalog from '@/components/Catalog'
 
 export default {
   components: {
-    PicturesPageFirstScreen,
+    CatalogPageFirstScreen,
+    Catalog,
   },
+  // layout: 'default',
 }
 </script>
 

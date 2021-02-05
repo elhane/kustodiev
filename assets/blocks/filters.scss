@@ -1,0 +1,186 @@
+
+.filters {
+  width: 250px;
+  @include text(12px, 26px);
+  color: $gray-dark;
+
+  &__block {
+    margin-bottom: 20px;
+    width: 200px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $gray-light-border;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-family: $helvetica;
+    @include text(12px, 14px, 700);
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+    padding: 4px 0;
+    margin: 6px 0 16px 0;
+    outline: none;
+
+    &--fold {
+      justify-content: flex-start;
+      text-transform: none;
+    }
+  }
+
+  &__btn-sign {
+    font-size: 21px;
+    font-weight: 400;
+    padding-bottom: 1px;
+  }
+
+  &__btn-fold-text {
+    margin-left: 10px;
+  }
+
+  &__search-input {
+    height: 29px;
+    padding: 5px 10px;
+    width: 100%;
+    @include text(12px, 26px);
+    border: 1px solid $gray-light-border;
+    margin-bottom: 10px;
+    outline: none;
+
+    &--periods {
+      display: inline-block;
+      vertical-align: top;
+      width: 80px;
+      margin-right: 10px;
+    }
+
+    &::placeholder {
+      color: $gray-light-border;
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+}
+
+.filters__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 4px 0 2px 25px;
+  cursor: pointer;
+
+  &::before {
+    @include pseudo();
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $gray-light-border;
+    border-radius: 4px;
+  }
+
+  &::after {
+    @include pseudo($display: none);
+    left: 4px;
+    top: 13px;
+    width: 8px;
+    height: 5px;
+    border: 2px solid $gray-dark;
+    border-top-style: none;
+    border-right-style: none;
+    transform: rotate(-45deg);
+  }
+}
+
+.filters__block--work .filters__label {
+  padding-left: 0;
+
+  &::before {
+    display: none;
+  }
+  &::after {
+    @include pseudo($display: none, $content: '+');
+    top: 9px;
+    left: -14px;
+    width: 7px;
+    height: 7px;
+    color: $gray-dark;
+    font-size: 15px;
+    line-height: 16px;
+    border: none;
+    transform: rotate(0);
+  }
+
+  span {
+    color: $gray-light;
+    margin-left: auto;
+  }
+}
+
+.filters__checkbox:checked + .filters__label::after {
+  display: block;
+}
+
+.filters__checkbox:checked + .filters__block--work.filters__label::after {
+  display: block;
+}
+
+// плюсик/крестик в фильтре Работы
+.filters__block--work .filters__label:hover::after {
+  display: block;
+}
+
+.filters__block--work .filters__checkbox:checked + .filters__label::after {
+  display: block;
+  transform: rotate(45deg);
+  left: -10px;
+  font-size: 17px;
+}
+
+@media (max-width: $mobile-width) {
+  .filters {
+    width: 100%;
+
+    &__block {
+      width: 100%;
+    }
+
+    &__btn {
+      justify-content: flex-start;
+    }
+
+    &__btn-sign {
+      margin-left: 20px;
+
+      &--fold {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 480px) and (max-width: $mobile-width) {
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__block {
+      width: 42%;
+      margin-right: 20px;
+    }
+  }
+}

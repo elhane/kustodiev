@@ -13,7 +13,8 @@
               v-for="(picture, index) in pictures"
               :key="index"
               :style="{
-                'background-image': 'url(' + picture.src + ')',
+                backgroundImage:
+                  'url(' + require(`~/static/pictures/${picture.src}`) + ')',
               }"
             ></div>
           </div>
@@ -37,16 +38,16 @@ export default {
     return {
       pictures: [
         {
-          src: require('~/static/pictures/slide1@1x.jpg'),
+          src: 'slide1@1x.jpg',
         },
         {
-          src: require('~/static/pictures/slide6@1x.jpg'),
+          src: 'slide6@1x.jpg',
         },
         {
-          src: require('~/static/pictures/slide7@1x.jpg'),
+          src: 'slide7@1x.jpg',
         },
         {
-          src: require('~/static/pictures/slide4@1x.jpg'),
+          src: 'slide4@1x.jpg',
         },
       ],
     }
