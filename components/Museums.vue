@@ -26,10 +26,14 @@
                 />
               </svg>
             </span>
-            <h3>{{ museum.name }}</h3>
+            <a class="museums__link museums__link--name" href="">
+              {{ museum.name }}</a
+            >
           </div>
           <p>{{ museum.addres }}</p>
-          <a :href="museum.phoneLink">{{ museum.phone }}</a>
+          <a class="museums__link" :href="museum.phoneLink">
+            {{ museum.phone }}
+          </a>
         </li>
       </ul>
     </div>
@@ -110,23 +114,31 @@ export default {
       margin-top: 4px;
     }
 
-    h3 {
-      @include text(16px, 26px, 700);
-      color: $dark;
-      margin-top: 0;
-      margin-bottom: 7px;
-    }
-
     p {
       @include text(14px, 24px);
       color: $gray-light;
       max-width: 195px;
       margin-bottom: 2px;
     }
+  }
 
-    a {
-      @include text(14px, 24px);
-      color: $gray-light;
+  &__link {
+    @include text(14px, 24px);
+    color: $gray-light;
+
+    &--name {
+      @include text(16px, 26px, 700);
+      color: $dark;
+      margin-top: 0;
+      margin-bottom: 7px;
+    }
+
+    &:hover {
+      color: $hover;
+      text-decoration: underline;
+    }
+    &:active {
+      opacity: 0.7;
     }
   }
 

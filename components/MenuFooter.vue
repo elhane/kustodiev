@@ -48,6 +48,15 @@
     @include text(14px, 16px, 400);
     text-decoration: none;
     color: $light;
+
+    &:hover {
+      color: $hover;
+      box-shadow: 0 1px 0 0 $hover;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 }
 

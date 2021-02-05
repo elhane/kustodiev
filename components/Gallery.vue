@@ -193,6 +193,18 @@ export default {
     svg {
       margin-left: 10px;
     }
+
+    &:hover {
+      color: $hover;
+
+      svg path {
+        fill: $hover;
+      }
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 
   &__activePicture {
@@ -246,10 +258,6 @@ export default {
     outline: none;
     height: 30px;
 
-    &:hover {
-      opacity: 1;
-    }
-
     &--prev {
       left: 0;
       padding: 0;
@@ -261,6 +269,18 @@ export default {
       svg {
         transform: rotate(180deg);
       }
+    }
+
+    &:hover {
+      opacity: 1;
+
+      svg path {
+        fill: $hover;
+      }
+    }
+
+    &:active {
+      opacity: 0.7;
     }
   }
 

@@ -4,8 +4,10 @@
   &__inner {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    // align-items: flex-start;
+    align-items: stretch;
     margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   &__tabs-wrapper {
@@ -19,6 +21,15 @@
     margin-right: 40px;
     padding: 10px 0;
     cursor: pointer;
+
+    &:hover {
+      color: $hover;
+      border-bottom: 3px solid $hover;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 
   &__tab--active {
@@ -30,7 +41,6 @@
     @include list-reset();
     display: flex;
   }
-
 
   &__controls {
     display: flex;
@@ -75,6 +85,15 @@
       transform: rotate(45deg);
       pointer-events: none;
     }
+
+    &:hover {
+      background-color: $hover;
+      color: $dark;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 
   &__gallery-view-btn {
@@ -84,6 +103,22 @@
 
     svg {
       pointer-events: none;
+    }
+
+    &--active {
+      svg path {
+        fill: $dark;
+      }
+    }
+
+    &:hover {
+      svg path {
+        fill: $hover;
+      }
+    }
+
+    &:active {
+      opacity: 0.7;
     }
   }
 
@@ -109,6 +144,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-bottom: 25px;
   }
 
   &__empty-message {
@@ -132,12 +168,6 @@
         .catalog__picture-text {
           max-width: 245px;
         }
-
-        .catalog__gallery-view-btn--big {
-          svg path {
-            fill: $dark;
-          }
-        }
       }
 
       &--small {
@@ -149,12 +179,6 @@
         }
         .catalog__picture-text {
           max-width: 200px;
-        }
-
-        .catalog__gallery-view-btn--small {
-          svg path {
-            fill: $dark;
-          }
         }
       }
     }
@@ -181,6 +205,10 @@
     &__picture {
       width: 100%;
       padding-top: 122%;
+    }
+
+    &__picture-text {
+      text-align: left;
     }
 
     &__filter-toggle-btn {
@@ -213,4 +241,9 @@
   .catalog__picture-wrapper {
     width: 30%;
   }
+}
+
+.catalog__filtered-wrapper {
+  display: flex;
+  flex-direction: column;
 }

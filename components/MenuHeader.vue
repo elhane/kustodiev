@@ -23,26 +23,6 @@
   </nav>
 </template>
 
-<script>
-// export default {
-//   data() {
-//     return {
-//       windowWidth: 0,
-//     }
-//   },
-//   computed: {
-//     isMobile() {
-//       return this.windowWidth <= 1023
-//     },
-//   },
-//   mounted() {
-//     window.onresize = () => {
-//       this.windowWidth = window.innerWidth
-//     }
-//   },
-// }
-</script>
-
 <style scoped lang="scss">
 .nav {
   display: flex;
@@ -74,6 +54,15 @@
     @include text(14px, 16px, 400);
     text-decoration: none;
     color: $light;
+
+    &:hover {
+      color: $hover;
+      box-shadow: 0 1px 0 0 $hover;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 }
 

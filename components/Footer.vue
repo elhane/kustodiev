@@ -67,6 +67,16 @@ export default {
 
   &__link {
     display: block;
+
+    &:hover {
+      svg path {
+        fill: $hover;
+      }
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
   }
 }
 </style>

@@ -72,76 +72,87 @@
         />
       </div>
 
-      <div
-        class="catalog__pictures"
-        :class="{
-          'catalog__pictures--big': bigPictures,
-          'catalog__pictures--small': smallPictures,
-        }"
-      >
-        <div v-if="!isMobile" class="catalog__controls">
-          <ul class="catalog__tags">
-            <li
-              v-for="(item, index) in selectedTags"
-              :id="item.value"
-              :key="index"
-              class="catalog__tag"
-              @click="tagClickHandler($event, index)"
-            >
-              <p>{{ item.name }}</p>
-              <span>+</span>
-            </li>
-          </ul>
+      <div class="catalog__filtered-wrapper">
+        <div
+          class="catalog__pictures"
+          :class="{
+            'catalog__pictures--big': bigPictures,
+            'catalog__pictures--small': smallPictures,
+          }"
+        >
+          <div v-if="!isMobile" class="catalog__controls">
+            <ul class="catalog__tags">
+              <li
+                v-for="(item, index) in selectedTags"
+                :id="item.value"
+                :key="index"
+                class="catalog__tag"
+                @click="tagClickHandler($event, index)"
+              >
+                <p>{{ item.name }}</p>
+                <span>+</span>
+              </li>
+            </ul>
 
-          <div class="catalog__gallery-view-btns">
-            <button
-              id="big"
-              class="catalog__gallery-view-btn catalog__gallery-view-btn--big"
-              type="button"
-              @click="galleryViewHandler($event)"
-            >
-              <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fill="#BFBFBF"
-                  d="M0 0h6v6H0zM9 0h6v6H9zM0 9h6v6H0zM9 9h6v6H9z"
-                />
-              </svg>
-            </button>
-            <button
-              id="small"
-              class="catalog__gallery-view-btn catalog__gallery-view-btn--small"
-              type="button"
-              @click="galleryViewHandler($event)"
-            >
-              <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M0 0h2.647v2.647H0V0zm0 6.1765h2.647v2.647H0v-2.647zm0 6.1764h2.647V15H0v-2.6471zM6.1765 0h2.647v2.647h-2.647V0zm0 6.1765h2.647v2.647h-2.647v-2.647zm0 6.1764h2.647V15h-2.647v-2.6471zM12.3529 0H15v2.647h-2.6471V0zm0 6.1765H15v2.647h-2.6471v-2.647zm0 6.1764H15V15h-2.6471v-2.6471z"
-                  fill="#BFBFBF"
-                />
-              </svg>
-            </button>
+            <div class="catalog__gallery-view-btns">
+              <button
+                id="big"
+                class="catalog__gallery-view-btn"
+                :class="{ 'catalog__gallery-view-btn--active': bigPictures }"
+                type="button"
+                @click="galleryViewHandler($event)"
+              >
+                <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0h6v6H0zM9 0h6v6H9zM0 9h6v6H0zM9 9h6v6H9z"
+                    fill="#bfbfbf"
+                  />
+                </svg>
+              </button>
+              <button
+                id="small"
+                class="catalog__gallery-view-btn"
+                :class="{ 'catalog__gallery-view-btn--active': smallPictures }"
+                type="button"
+                @click="galleryViewHandler($event)"
+              >
+                <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M0 0h2.647v2.647H0V0zm0 6.1765h2.647v2.647H0v-2.647zm0 6.1764h2.647V15H0v-2.6471zM6.1765 0h2.647v2.647h-2.647V0zm0 6.1765h2.647v2.647h-2.647v-2.647zm0 6.1764h2.647V15h-2.647v-2.6471zM12.3529 0H15v2.647h-2.6471V0zm0 6.1765H15v2.647h-2.6471v-2.647zm0 6.1764H15V15h-2.6471v-2.6471z"
+                    fill="#bfbfbf"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p v-if="!filteredPictures.length" class="catalog__empty-message">
+            Нет картин, соответствующих выбранным параметрам
+          </p>
+
+          <div
+            v-for="(item, index) in picturesPaginated"
+            :key="index"
+            class="catalog__picture-wrapper"
+          >
+            <div
+              class="catalog__picture"
+              :style="{
+                backgroundImage:
+                  'url(' +
+                  require(`~/static/pictures/filters/${item.img}`) +
+                  ')',
+              }"
+            ></div>
+            <p class="catalog__picture-text">{{ item.name }}</p>
+            <p class="catalog__picture-text">{{ item.year }}</p>
           </div>
         </div>
-        <p v-if="!filteredPictures.length" class="catalog__empty-message">
-          Нет картин, соответствующих выбранным параметрам
-        </p>
-
-        <div
-          v-for="(item, index) in filteredPictures"
-          :key="index"
-          class="catalog__picture-wrapper"
-        >
-          <div
-            class="catalog__picture"
-            :style="{
-              backgroundImage:
-                'url(' + require(`~/static/pictures/filters/${item.img}`) + ')',
-            }"
-          ></div>
-          <p class="catalog__picture-text">{{ item.name }}</p>
-          <p class="catalog__picture-text">{{ item.year }}</p>
-        </div>
-
+        <Pagination
+          :data="filteredPictures"
+          :per-page="perPage"
+          :current-page="currentPage"
+          @paginationChange="changePageHandler"
+        />
       </div>
     </div>
   </section>
@@ -150,10 +161,13 @@
 <script>
 import FilterBlock from '@/components/FilterBlock'
 import FilterBlockPeriod from '@/components/FilterBlockPeriod'
+import Pagination from '@/components/Pagination'
+
 export default {
   components: {
     FilterBlock,
     FilterBlockPeriod,
+    Pagination,
   },
   data() {
     return {
@@ -162,6 +176,7 @@ export default {
       smallPictures: false,
       filtersOpened: true,
       currentPage: 0,
+      perPage: 10,
       picturesPaginated: [],
       selectedTags: [
         {
@@ -603,6 +618,7 @@ export default {
         this.tabPictures.rarity = data.pictures
 
         this.countWorkTypes()
+        this.changePageHandler()
       })
     this.windowWidth = window.innerWidth
     window.addEventListener('resize', (evt) => {
@@ -628,6 +644,7 @@ export default {
           this.selectedTags.splice(tagIndex, 1)
         }
       }
+      this.changePageHandler()
     },
     fromYearInputChangeHandler(value) {
       this.periods.minYear = value
@@ -654,6 +671,7 @@ export default {
           const data = json
           this.tabPictures[this.activeTab] = data.pictures
           this.countWorkTypes()
+          this.changePageHandler()
         })
     },
     tagClickHandler(evt, index) {
@@ -679,6 +697,7 @@ export default {
       if (tagIndex !== -1) {
         this.selectedTags.splice(tagIndex, 1)
       }
+      this.changePageHandler()
     },
     galleryViewHandler(evt) {
       const id = evt.target.id
@@ -686,10 +705,21 @@ export default {
       if (id === 'big') {
         this.bigPictures = true
         this.smallPictures = false
+        this.perPage = 10
       } else if (id === 'small') {
         this.bigPictures = false
         this.smallPictures = true
+        this.perPage = 15
       }
+      this.changePageHandler()
+    },
+    changePageHandler(id = 1) {
+      this.picturesPaginated = this.filteredPictures.slice(
+        id * this.perPage - this.perPage,
+        id * this.perPage
+      )
+
+      this.currentPage = Number(id)
     },
   },
 }

@@ -38,6 +38,18 @@
       line-height: 100%;
       text-align: left;
     }
+
+    &:hover {
+      color: $hover;
+
+      svg path {
+        fill: $hover;
+      }
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
   }
 
   @media (max-width: $mobile-width) {

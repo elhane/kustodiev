@@ -25,11 +25,13 @@
   margin: 0 100px 40px auto;
 
   &:hover {
-    opacity: 0.7;
+    svg path {
+      fill: $hover;
+    }
   }
 
   &:active {
-    opacity: 0.3;
+    opacity: 0.4;
   }
 
   @media (max-width: $mobile-width) {
