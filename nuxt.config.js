@@ -3,16 +3,36 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'kustodiev',
+    title: 'Борис Кустодиев',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ru',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Картины Бориса Кустодиева',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'preload',
+        as: 'font',
+        crossorigin: 'crossorigin',
+        type: 'font/woff2',
+        href: '/fonts/yeseva-one-regular.woff2',
+      },
+      {
+        rel: 'preload',
+        as: 'font',
+        crossorigin: 'crossorigin',
+        type: 'font/woff2',
+        href: '/fonts/helvetica-regular.woff2',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

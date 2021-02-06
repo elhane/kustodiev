@@ -79,9 +79,12 @@
     height: 100vh;
     padding: 80px 30px;
     background: #ededed;
-    list-style-type: none;
     transform: translate(100%, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+
+    &__item {
+      margin-bottom: 25px;
+    }
 
     &__link {
       color: $dark;
@@ -92,34 +95,32 @@
   .menu-toggle {
     display: block;
     position: relative;
+    z-index: 1;
     top: 0;
     right: 0;
 
-    z-index: 1;
-    user-select: none;
-
     input {
       position: absolute;
+      z-index: 2;
+      top: -7px;
+      left: -5px;
       display: block;
       width: 30px;
       height: 30px;
-      top: -7px;
-      left: -5px;
       opacity: 0;
-      z-index: 2;
       cursor: pointer;
     }
 
     span {
+      position: relative;
+      z-index: 1;
       display: block;
       width: 24px;
       height: 2px;
       margin-bottom: 5px;
-      position: relative;
       border: 1px solid $light;
       background: $light;
       border-radius: 2px;
-      z-index: 1;
       transform-origin: 8px 0px;
       transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
         background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;

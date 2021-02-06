@@ -36,7 +36,6 @@
         </label>
       </div>
     </div>
-    <!-- <p>выбрано - {{ data.selectedTypes }}</p> -->
   </div>
 </template>
 

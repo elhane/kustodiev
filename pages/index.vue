@@ -5,7 +5,6 @@
     <Gallery />
     <Artwork />
     <Museums />
-    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -27,10 +26,3 @@ export default {
   layout: 'default',
 }
 </script>
-
-<style lang="scss" scoped>
-div {
-  box-sizing: border-box;
-  overflow: hidden;
-}
-</style>

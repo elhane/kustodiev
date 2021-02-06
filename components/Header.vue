@@ -57,9 +57,9 @@ export default {
     height: 30px;
     color: #fff;
     background-color: transparent;
-    transition: all 2s;
-    outline: none;
     border: none;
+    outline: none;
+    transition: all 2s;
 
     &--opened {
       width: 170px;

@@ -30,16 +30,18 @@
         </p>
       </div>
       <div v-if="readMore">
-        <div v-for="fact in facts" :key="fact.id" class="biography__fact">
-          <span class="biography__fact-year">{{ fact.year }}</span>
-          <p class="biography__fact-text">{{ fact.text }}</p>
-        </div>
+        <transition-group tag="div" name="slide" appear>
+          <div v-for="fact in facts" :key="fact.id" class="biography__fact">
+            <span class="biography__fact-year">{{ fact.year }}</span>
+            <p class="biography__fact-text">{{ fact.text }}</p>
+          </div>
+        </transition-group>
       </div>
     </div>
     <div class="biography__bottom section__bottom">
       <Socials />
       <button class="section__button" @click="readMore = !readMore">
-        <span>{{ btnText }}</span>
+        <span>{{ readMore ? 'cкрыть' : 'читать больше' }}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="15">
           <path
             fill="#202020"
@@ -63,15 +65,6 @@ export default {
       facts: {},
       readMore: false,
     }
-  },
-  computed: {
-    btnText() {
-      if (this.readMore) {
-        return 'cкрыть'
-      }
-
-      return 'читать больше'
-    },
   },
   mounted() {
     fetch('https://api.npoint.io/89f2d4712a74200e70b4')
@@ -109,10 +102,10 @@ export default {
   }
 
   &__fact-year {
+    display: block;
     @include text(20px, 40px, 700);
     color: $gray-light;
     margin-right: 30px;
-    display: block;
   }
 
   @media (max-width: $mobile-width) {
@@ -129,5 +122,16 @@ export default {
       max-width: none;
     }
   }
+}
+
+.slide-enter-active {
+  transition: all 1.5s ease;
+}
+.slide-leave-active {
+  transition: all 1.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-enter,
+.slide-leave-to {
+  transform: translateX(-150px);
 }
 </style>

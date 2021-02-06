@@ -81,9 +81,9 @@ export default {
   &__pictures {
     display: inline-block;
     vertical-align: top;
+    width: 100%;
     font-size: 0;
     white-space: nowrap;
-    width: 100%;
 
     div {
       display: inline-block;
@@ -94,7 +94,6 @@ export default {
       background-position: center;
       background-repeat: no-repeat;
       margin: 0 20px 0 0;
-      cursor: pointer;
 
       &:last-child {
         margin-right: 0;
@@ -105,8 +104,8 @@ export default {
   &__info {
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
     color: $light;
+    margin-bottom: 60px;
   }
 
   &__title {

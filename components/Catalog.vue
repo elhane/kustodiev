@@ -687,13 +687,13 @@ export default {
         (el) => el.value === evt.target.id
       )
 
-      // снимаем галочку с чекбокса
+      // снимаем галочку с чекбокса фильтра
       filterTypes[typeIndex].isChecked = false
 
-      // удаляем из выбранных элементов
+      // удаляем значение фильтра из массива выбранных
       filterSelectedTypes.splice(itemIndex, 1)
 
-      // удаляем из выбранных тегов
+      // удаляем тег из массива выбранных
       if (tagIndex !== -1) {
         this.selectedTags.splice(tagIndex, 1)
       }

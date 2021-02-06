@@ -83,7 +83,15 @@ export default {
 
   &__map-wrapper {
     max-width: 1200px;
+    height: 514px;
     margin: 0 auto;
+    background-image: url('~static/pictures/map-with-marker.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+      background-image: url('~static/pictures/map-with-marker@2x.jpg');
+    }
   }
 
   &__list {
@@ -103,8 +111,8 @@ export default {
 
     @media (min-width: $desktop-width) {
       &:not(:nth-child(3n - 2)) {
-        border-left: 1px solid $gray-light-border;
         padding-left: 41px;
+        border-left: 1px solid $gray-light-border;
         margin-right: 41px;
       }
     }
@@ -129,8 +137,7 @@ export default {
     &--name {
       @include text(16px, 26px, 700);
       color: $dark;
-      margin-top: 0;
-      margin-bottom: 7px;
+      margin: 0 0 7px 0;
     }
 
     &:hover {
@@ -143,11 +150,18 @@ export default {
   }
 
   @media (max-width: $mobile-width) {
+    &__map-wrapper {
+      background-image: url('~static/pictures/map-with-marker-mobile.jpg');
+
+      @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+        background-image: url('~static/pictures/map-with-marker-mobile@2x.jpg');
+      }
+    }
+
     &__list {
-      padding: 0;
-      margin-left: -20px;
-      margin-right: -20px;
       flex-direction: column;
+      padding: 0;
+      margin: 0 -20px;
     }
 
     &__list-item {

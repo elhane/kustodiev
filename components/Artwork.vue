@@ -14,12 +14,6 @@
         картинах Кустодиева природа всегда представляет собой нечто гораздо
         большее, чем просто пейзажное изображение.
       </p>
-      <!-- <img
-        src="~static/pictures/artwork1.jpg"
-        alt=""
-        width="240"
-        height="173"
-      /> -->
       <picture>
         <source
           media="(max-width: 1023px)"
@@ -34,17 +28,10 @@
           width="240"
           height="173"
           loading="lazy"
-          alt=""
+          alt="картина Кустодиева «Осень», 1924"
         />
       </picture>
     </div>
-
-    <!-- <img
-      src="~static/pictures/artwork-main.jpg"
-      alt=""
-      width="920"
-      height="667"
-    /> -->
     <picture>
       <source
         media="(max-width: 1023px)"
@@ -59,7 +46,7 @@
         width="920"
         height="667"
         loading="lazy"
-        alt=""
+        alt="картина Кустодиева «Осеннее гулянье», 1922"
       />
     </picture>
     <div class="artwork__inner artwork__inner--bottom">
@@ -168,10 +155,8 @@ export default {
       padding-bottom: 20px;
 
       &--top {
-        // padding-left: 0;
-        // padding-right: 0;
-        margin: 0 -20px;
         padding: 40px 20px 20px;
+        margin: 0 -20px;
 
         img {
           margin-top: 20px;
@@ -180,8 +165,8 @@ export default {
     }
 
     &__feature {
-      margin-bottom: 20px;
       max-width: none;
+      margin-bottom: 20px;
     }
 
     &__button {

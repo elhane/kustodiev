@@ -60,17 +60,15 @@
       </nuxt-link>
 
       <!-- активный слайд -->
-      <transition name="fade">
-        <div
-          class="gallery__activePicture"
-          :style="{
-            backgroundImage:
-              'url(' +
-              require(`~/static/pictures/${pictures[activePicture].src}`) +
-              ')',
-          }"
-        ></div>
-      </transition>
+      <div
+        class="gallery__activePicture"
+        :style="{
+          backgroundImage:
+            'url(' +
+            require(`~/static/pictures/${pictures[activePicture].src}`) +
+            ')',
+        }"
+      ></div>
     </div>
   </section>
 </template>
@@ -186,9 +184,9 @@ export default {
   &__link {
     display: flex;
     align-items: center;
-    margin-left: auto;
     @include text(14px, 20px);
     color: $gray-light;
+    margin-left: auto;
 
     svg {
       margin-left: 10px;
@@ -214,11 +212,7 @@ export default {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
+    transition: background 0.9s linear;
   }
 
   &__pictute-name {
@@ -250,13 +244,13 @@ export default {
   &__btn {
     position: absolute;
     bottom: 36px;
-    border: none;
-    background-color: transparent;
+    height: 30px;
     font-size: 32px;
     color: #fff;
     opacity: 1;
+    border: none;
+    background-color: transparent;
     outline: none;
-    height: 30px;
 
     &--prev {
       left: 0;
@@ -294,10 +288,10 @@ export default {
     div {
       width: 120px;
       height: 90px;
+      opacity: 0.6;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.6;
       cursor: pointer;
 
       &:hover {
@@ -318,8 +312,8 @@ export default {
       display: inline-block;
       vertical-align: top;
       width: 100%;
-      overflow: hidden;
       padding-bottom: 0;
+      overflow: hidden;
     }
 
     &__slider-mobile {
@@ -334,20 +328,20 @@ export default {
       display: inline-block;
       vertical-align: top;
       font-size: 0;
-      white-space: nowrap;
       width: 100%;
-      overflow: auto;
+      white-space: nowrap;
       padding: 40px 0 90px;
+      overflow: auto;
 
       div {
         display: inline-block;
         vertical-align: top;
         width: 59%;
         padding-bottom: 46%;
+        opacity: 1;
         background: none no-repeat 50% 50%;
         background-size: cover;
         margin: 0 20px 0 0;
-        opacity: 1;
 
         &:last-child {
           margin-right: 0;

@@ -59,7 +59,7 @@ export default {
   }
 
   &__item {
-    padding: 0 10px;
+    padding: 0 8px;
     cursor: pointer;
 
     &--active {

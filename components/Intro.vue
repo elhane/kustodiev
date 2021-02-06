@@ -11,10 +11,6 @@
   </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss" scoped>
 .intro {
   position: relative;
@@ -22,9 +18,9 @@ export default {}
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  color: $light;
   padding-left: 140px;
   padding-top: 0;
+  color: $light;
 
   &__date,
   &__title {
@@ -49,8 +45,7 @@ export default {}
   &__text {
     max-width: 561px;
     @include text(16px, 29px, 300);
-    margin-left: 41px;
-    margin-top: 0;
+    margin: 0 0 0 41px;
   }
 
   @media (max-width: $mobile-width) {
@@ -64,7 +59,7 @@ export default {}
     &__title {
       @include text(40px, 44px);
       margin: 0;
-      margin-bottom: 19px;
+      margin: 0 0 19px 0;
     }
 
     &__text {

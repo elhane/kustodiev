@@ -14,13 +14,5 @@ export default {
     CatalogPageFirstScreen,
     Catalog,
   },
-  // layout: 'default',
 }
 </script>
-
-<style lang="scss" scoped>
-div {
-  box-sizing: border-box;
-  overflow: hidden;
-}
-</style>
