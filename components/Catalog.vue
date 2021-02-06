@@ -125,7 +125,7 @@
               </button>
             </div>
           </div>
-          <p v-if="!filteredPictures.length" class="catalog__empty-message">
+          <p v-if="!picturesPaginated.length" class="catalog__empty-message">
             Нет картин, соответствующих выбранным параметрам
           </p>
 
