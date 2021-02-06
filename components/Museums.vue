@@ -144,6 +144,12 @@ export default {
       color: $hover;
       text-decoration: underline;
     }
+
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
+    }
+
     &:active {
       opacity: 0.7;
     }

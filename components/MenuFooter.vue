@@ -54,6 +54,11 @@
       box-shadow: 0 1px 0 0 $hover;
     }
 
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
+    }
+
     &:active {
       opacity: 0.7;
     }

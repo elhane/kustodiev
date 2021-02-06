@@ -1,10 +1,11 @@
 <template>
   <div class="pagination">
-    <ul class="pagination__list">
+    <ul class="pagination__list" aria-label="номера страниц" tabindex="0">
       <li
         v-for="page in pagesAmount"
         :id="page"
         :key="page"
+        tabindex="0"
         :class="{ 'pagination__item--active': currentPage === page }"
         class="pagination__item"
         @click="$emit('paginationChange', $event.target.id)"
@@ -56,6 +57,7 @@ export default {
     @include text(18px, 20px);
     display: flex;
     color: $gray-light;
+    outline: none;
   }
 
   &__item {
@@ -68,6 +70,11 @@ export default {
 
     &:hover {
       color: $hover;
+    }
+
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
     }
 
     &:active {

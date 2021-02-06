@@ -6,9 +6,11 @@
           v-for="tab in tabs"
           :id="tab.id"
           :key="tab.id"
+          tabindex="0"
           class="catalog__tab"
           :class="{ 'catalog__tab--active': tab.id === activeTab }"
           @click="tabsHandler($event, tab)"
+          @keypress.enter="tabsHandler($event, tab)"
         >
           {{ tab.name }}
         </li>
@@ -100,7 +102,9 @@
                 class="catalog__gallery-view-btn"
                 :class="{ 'catalog__gallery-view-btn--active': bigPictures }"
                 type="button"
+                aria-label="изменить вид галереи - большие изображения"
                 @click="galleryViewHandler($event)"
+                @keypress.enter="galleryViewHandler($event)"
               >
                 <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -114,7 +118,9 @@
                 class="catalog__gallery-view-btn"
                 :class="{ 'catalog__gallery-view-btn--active': smallPictures }"
                 type="button"
+                aria-label="изменить вид галереи - маленькие изображения"
                 @click="galleryViewHandler($event)"
+                @keypress.enter="galleryViewHandler($event)"
               >
                 <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
                   <path

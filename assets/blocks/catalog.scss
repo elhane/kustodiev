@@ -25,6 +25,11 @@
       border-bottom: 3px solid $hover;
     }
 
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
+    }
+
     &:active {
       opacity: 0.7;
     }
@@ -112,6 +117,11 @@
       svg path {
         fill: $hover;
       }
+    }
+
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
     }
 
     &:active {

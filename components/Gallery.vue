@@ -3,7 +3,7 @@
     <div class="gallery__slider">
       <!-- миниатюры -->
       <div ref="slider1" class="gallery__slider-mobile">
-        <div ref="slider" class="gallery__thumbnails">
+        <div ref="slider" class="gallery__thumbnails" aria-label="миниатюры">
           <div
             v-for="(picture, index) in pictures"
             :key="index"
@@ -200,6 +200,11 @@ export default {
       }
     }
 
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
+    }
+
     &:active {
       opacity: 0.7;
     }
@@ -251,6 +256,10 @@ export default {
     border: none;
     background-color: transparent;
     outline: none;
+
+    svg {
+      pointer-events: none;
+    }
 
     &--prev {
       left: 0;

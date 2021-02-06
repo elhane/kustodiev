@@ -10,12 +10,15 @@
           :class="{ 'header__search-input--opened': isSearchOpened }"
         />
         <svg
+          tabindex="0"
+          aria-label="поиск"
           xmlns="http://www.w3.org/2000/svg"
           width="18"
           height="18"
           class="header__search-icon"
           :class="{ 'header__search-icon--opened': isSearchOpened }"
           @click="isSearchOpened = !isSearchOpened"
+          @keypress.enter="isSearchOpened = !isSearchOpened"
         >
           <path
             fill="#f5f5f5"
@@ -69,6 +72,7 @@ export default {
   }
   &__search-icon {
     cursor: pointer;
+    outline: none;
 
     &--opened {
       position: absolute;
@@ -79,6 +83,11 @@ export default {
       path {
         fill: $hover;
       }
+    }
+
+    &:focus {
+      outline: dashed 2px rgba(255, 166, 0, 0.5);
+      outline-offset: 5px;
     }
   }
 
