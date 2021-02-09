@@ -25,6 +25,7 @@
 
 <style scoped lang="scss">
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,9 +75,9 @@
 @media (max-width: $mobile-width) {
   .menu {
     position: absolute;
-    right: -31px;
+    right: -30px;
     top: -32px;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
@@ -84,8 +85,6 @@
     height: 100vh;
     padding: 80px 30px;
     background: #ededed;
-    transform: translate(100%, 0);
-    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 
     &__item {
       margin-bottom: 25px;
@@ -147,8 +146,21 @@
       transform: rotate(45deg) translate(1px, -1px);
     }
     input:checked ~ ul {
-      transform: none;
+      display: flex;
+      animation: show 1s linear;
     }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
